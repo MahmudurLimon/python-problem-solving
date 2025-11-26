@@ -1,12 +1,15 @@
 from typing import List
-
 class Solution():
-    def max_subarr(self,nums: List[int]) -> List[int]:
-        num_len = len(nums)
-        n = int((num_len*(num_len+1))/2)
-        for i in range(n):
-            first_val = nums[i]
-            last_val = nums[num_len-1]
-            if i >= num_len-1
+    def max_subarray(self, nums: List[int]) -> List[int]:
+        max_sum = 0
+        temp_sum = 0
+        for i in range(len(nums)):
+            for j in range(i,len(nums)):
+                #list[start : end] is a python feature that splits array from start index to before end index (0 -> i-1)
+                temp = nums[i:j+1]
+                temp_sum = sum(temp)
+                if temp_sum > max_sum:
+                    max_sum = temp_sum
+        return max_sum
 solution=Solution()
-print(solution.max_subarr([1,2,-1,4,-4,2,1]))
+print(solution.max_subarray([1,3,4,6]))
